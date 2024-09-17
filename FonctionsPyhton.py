@@ -65,14 +65,55 @@ def mesImpots(revenu):
     if revenu <= 10225:
         return 0
     if revenu <= 26070:
-        return (revenu - 10226) * 0.11
+        return int((revenu - 10226) * 0.11)
     if revenu <= 74545:
-        return (revenu - 26071) * 0.3 + (26070 - 10225) * 0.11
+        return int((revenu - 26071) * 0.3 + (26070 - 10225) * 0.11)
     if revenu <= 160336:
-        return (revenu - 74546) * 0.41 + (74545 - 26071) * 0.3 + (26070 - 10225) * 0.11
+        return int((revenu - 74546) * 0.41 + (74545 - 26071) * 0.3 + (26070 - 10225) * 0.11)
     if revenu > 160336:
-        return (revenu - 160337) * 0.45 + (160336 - 74546) * 0.41 + (74545 - 26071) * 0.3 + (26070 - 10225) * 0.11
+        return int((revenu - 160337) * 0.45 + (160336 - 74546) * 0.41 + (74545 - 26071) * 0.3 + (26070 - 10225) * 0.11)
     return "Revenu invalide"
+
+def multiplication(a, b):
+    '''
+    Multiplie deux matrices
+    entrée : a, b
+    sortie : a * b
+    '''
+    if len(a[0]) != len(b):
+        return "Matrices incompatibles"
+    
+    C = []
+
+    for i in range(len(a)):
+        C.append([])
+        for j in range(len(b[0])):
+            C[i].append(0)
+            for k in range(len(b)):
+                C[i][j] += a[i][k] * b[k][j]
+    return C
+
+def hanoi(n, A, B, C):
+    '''
+    Résout le problème des tours de Hanoï
+    entrée : n, A, B, C
+    sortie : déplacement des disques
+    '''
+    if n == 1:
+        print("Déplacer le disque 1 de", A, "à", C)
+        return
+    hanoi(n-1, A, C, B)
+    print("Déplacer le disque", n, "de", A, "à", C)
+    hanoi(n-1, B, A, C)
+
+
+ 
+
+
+
+
+
+   
    
 
         
